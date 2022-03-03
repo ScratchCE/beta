@@ -11043,19 +11043,7 @@ class MenuBar extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
     })) : this.props.enableSeeInside ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_tw_see_inside_jsx__WEBPACK_IMPORTED_MODULE_48__["default"], {
       className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarButton,
       onClick: this.handleClickSeeInside
-    }) : []), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-      className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarItem
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-      className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.feedbackLink,
-      href: "https://scratch.mit.edu/users/CST1229/#comments",
-      rel: "noopener noreferrer",
-      target: "_blank"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_button_button_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.feedbackButton
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__["FormattedMessage"], {
-      defaultMessage: "Feedback",
-      id: "tw.feedbackButton"
-    }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+    }) : [])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
       className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.accountInfoGroup
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
       className: _menu_bar_css__WEBPACK_IMPORTED_MODULE_36___default.a.menuBarItem
@@ -17444,7 +17432,7 @@ const StoreProjectOptions = ({
   id: "tw.settingsModal.storeProjectOptions"
 })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_0__["FormattedMessage"] // eslint-disable-next-line max-len
 , {
-  defaultMessage: "Stores the selected settings in the project so they will be automatically applied when TurboWarp loads this project. Warp timer and disable compiler will not be saved.",
+  defaultMessage: "Stores the selected settings in the project so they will be automatically applied when this project is loaded. Warp timer and disable compiler will not be saved.",
   id: "tw.settingsModal.storeProjectOptionsHelp"
 }))));
 
@@ -33488,20 +33476,28 @@ __webpack_require__.r(__webpack_exports__);
     id: "gui.extension.gdxfor.connectingMessage"
   }),
   helpLink: 'https://scratch.mit.edu/vernier'
-}, {
-  name: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
-    defaultMessage: "TurboWarp Blocks",
-    id: "tw.twExtension.name"
-  }),
-  extensionId: 'tw',
-  iconURL: _tw_tw_svg__WEBPACK_IMPORTED_MODULE_31___default.a,
-  description: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
-    defaultMessage: "Weird new blocks. Not compatible with Scratch.",
-    id: "tw.twExtension.description"
-  }),
-  featured: true,
-  incompatibleWithScratch: true
-}, {
+},
+/*{
+    name: (
+        <FormattedMessage
+            defaultMessage="TurboWarp Blocks"
+            description="Name of TW extension"
+            id="tw.twExtension.name"
+        />
+    ),
+    extensionId: 'tw',
+    iconURL: twIcon,
+    description: (
+        <FormattedMessage
+            defaultMessage="Weird new blocks. Not compatible with Scratch."
+            description="Description of TW extension"
+            id="tw.twExtension.description"
+        />
+    ),
+    featured: true,
+    incompatibleWithScratch: true
+},*/
+{
   name: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__["FormattedMessage"], {
     defaultMessage: "Custom Extension",
     id: "tw.customExtension.name"
@@ -34178,16 +34174,16 @@ const sound = function sound(isInitialSetup, isStage, targetId, soundName) {
 };
 
 const events = function events(isInitialSetup, isStage) {
-  return "\n    <category name=\"%{BKY_CATEGORY_EVENTS}\" id=\"events\" colour=\"#FFD500\" secondaryColour=\"#CC9900\">\n        <block type=\"event_whenflagclicked\"/>\n        <block type=\"event_whenkeypressed\">\n        </block>\n        ".concat(isStage ? "\n            <block type=\"event_whenstageclicked\"/>\n        " : "\n            <block type=\"event_whenthisspriteclicked\"/>\n        ", "\n        <block type=\"event_whenbackdropswitchesto\">\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"event_whengreaterthan\">\n            <value name=\"VALUE\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"event_whenbroadcastreceived\">\n        </block>\n        <block type=\"event_broadcast\">\n            <value name=\"BROADCAST_INPUT\">\n                <shadow type=\"event_broadcast_menu\"></shadow>\n            </value>\n        </block>\n        <block type=\"event_broadcastandwait\">\n            <value name=\"BROADCAST_INPUT\">\n              <shadow type=\"event_broadcast_menu\"></shadow>\n            </value>\n        </block>\n        ").concat(categorySeparator, "\n    </category>\n    ");
+  return "\n    <category name=\"%{BKY_CATEGORY_EVENTS}\" id=\"events\" colour=\"#FFD500\" secondaryColour=\"#CC9900\">\n        <block type=\"event_whenflagclicked\"/>\n\t\t<block type=\"control_restart\"/>\n\t\t".concat(blockSeparator, "\n        <block type=\"event_whenkeypressed\">\n        </block>\n        ").concat(isStage ? "\n            <block type=\"event_whenstageclicked\"/>\n        " : "\n            <block type=\"event_whenthisspriteclicked\"/>\n        ", "\n        <block type=\"event_whenbackdropswitchesto\">\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"event_whengreaterthan\">\n            <value name=\"VALUE\">\n                <shadow type=\"math_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"event_whenbroadcastreceived\">\n        </block>\n        <block type=\"event_broadcast\">\n            <value name=\"BROADCAST_INPUT\">\n                <shadow type=\"event_broadcast_menu\"></shadow>\n            </value>\n        </block>\n        <block type=\"event_broadcastandwait\">\n            <value name=\"BROADCAST_INPUT\">\n              <shadow type=\"event_broadcast_menu\"></shadow>\n            </value>\n        </block>\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
 
 const control = function control(isInitialSetup, isStage) {
-  return "\n    <category name=\"%{BKY_CATEGORY_CONTROL}\" id=\"control\" colour=\"#FFAB19\" secondaryColour=\"#CF8B17\">\n        <block type=\"control_wait\">\n            <value name=\"DURATION\">\n                <shadow type=\"math_positive_number\">\n                    <field name=\"NUM\">1</field>\n                </shadow>\n            </value>\n        </block>\n        ".concat(blockSeparator, "\n        <block type=\"control_repeat\">\n            <value name=\"TIMES\">\n                <shadow type=\"math_whole_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        <block id=\"forever\" type=\"control_forever\"/>\n        ").concat(blockSeparator, "\n        <block type=\"control_if\"/>\n        <block type=\"control_if_else\"/>\n        <block id=\"wait_until\" type=\"control_wait_until\"/>\n        <block id=\"repeat_until\" type=\"control_repeat_until\"/>\n        <block id=\"while\" type=\"control_while\"/>\n        <block id=\"for_each\" type=\"control_for_each\">\n            <value name=\"VALUE\">\n                <shadow type=\"math_whole_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"control_stop\"/>\n        ").concat(blockSeparator, "\n        ").concat(isStage ? "\n            <block type=\"control_create_clone_of\">\n                <value name=\"CLONE_OPTION\">\n                    <shadow type=\"control_create_clone_of_menu\"/>\n                </value>\n            </block>\n        " : "\n            <block type=\"control_start_as_clone\"/>\n            <block type=\"control_create_clone_of\">\n                <value name=\"CLONE_OPTION\">\n                    <shadow type=\"control_create_clone_of_menu\"/>\n                </value>\n            </block>\n            <block type=\"control_delete_this_clone\"/>\n        ", "\n\t\t").concat(blockSeparator, "\n\t\t<block type=\"control_restart\"/>\n        ").concat(categorySeparator, "\n    </category>\n    ");
+  return "\n    <category name=\"%{BKY_CATEGORY_CONTROL}\" id=\"control\" colour=\"#FFAB19\" secondaryColour=\"#CF8B17\">\n        <block type=\"control_wait\">\n            <value name=\"DURATION\">\n                <shadow type=\"math_positive_number\">\n                    <field name=\"NUM\">1</field>\n                </shadow>\n            </value>\n        </block>\n        ".concat(blockSeparator, "\n        <block type=\"control_repeat\">\n            <value name=\"TIMES\">\n                <shadow type=\"math_whole_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        <block id=\"forever\" type=\"control_forever\"/>\n        ").concat(blockSeparator, "\n        <block type=\"control_if\"/>\n        <block type=\"control_if_else\"/>\n        <block id=\"wait_until\" type=\"control_wait_until\"/>\n        <block id=\"repeat_until\" type=\"control_repeat_until\"/>\n        <block id=\"while\" type=\"control_while\"/>\n        <block id=\"for_each\" type=\"control_for_each\">\n            <value name=\"VALUE\">\n                <shadow type=\"math_whole_number\">\n                    <field name=\"NUM\">10</field>\n                </shadow>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block type=\"control_stop\"/>\n        ").concat(blockSeparator, "\n        ").concat(isStage ? "\n            <block type=\"control_create_clone_of\">\n                <value name=\"CLONE_OPTION\">\n                    <shadow type=\"control_create_clone_of_menu\"/>\n                </value>\n            </block>\n        " : "\n            <block type=\"control_start_as_clone\"/>\n            <block type=\"control_create_clone_of\">\n                <value name=\"CLONE_OPTION\">\n                    <shadow type=\"control_create_clone_of_menu\"/>\n                </value>\n            </block>\n            <block type=\"control_delete_this_clone\"/>\n        ", "\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
 
 const sensing = function sensing(isInitialSetup, isStage) {
   const name = translate('SENSING_ASK_TEXT', 'What\'s your name?');
-  return "\n    <category name=\"%{BKY_CATEGORY_SENSING}\" id=\"sensing\" colour=\"#4CBFE6\" secondaryColour=\"#2E8EB8\">\n        ".concat(isStage ? '' : "\n            <block type=\"sensing_touchingobject\">\n                <value name=\"TOUCHINGOBJECTMENU\">\n                    <shadow type=\"sensing_touchingobjectmenu\"/>\n                </value>\n            </block>\n            <block type=\"sensing_touchingcolor\">\n                <value name=\"COLOR\">\n                    <shadow type=\"colour_picker\"/>\n                </value>\n            </block>\n            <block type=\"sensing_coloristouchingcolor\">\n                <value name=\"COLOR\">\n                    <shadow type=\"colour_picker\"/>\n                </value>\n                <value name=\"COLOR2\">\n                    <shadow type=\"colour_picker\"/>\n                </value>\n            </block>\n            <block type=\"sensing_distanceto\">\n                <value name=\"DISTANCETOMENU\">\n                    <shadow type=\"sensing_distancetomenu\"/>\n                </value>\n            </block>\n            ".concat(blockSeparator, "\n        "), "\n        ").concat(isInitialSetup ? '' : "\n            <block id=\"askandwait\" type=\"sensing_askandwait\">\n                <value name=\"QUESTION\">\n                    <shadow type=\"text\">\n                        <field name=\"TEXT\">".concat(name, "</field>\n                    </shadow>\n                </value>\n            </block>\n        "), "\n        <block id=\"answer\" type=\"sensing_answer\"/>\n        ").concat(blockSeparator, "\n        <block type=\"sensing_keypressed\">\n            <value name=\"KEY_OPTION\">\n                <shadow type=\"sensing_keyoptions\"/>\n            </value>\n        </block>\n        <block type=\"sensing_mousedown\"/>\n        <block type=\"sensing_mousex\"/>\n        <block type=\"sensing_mousey\"/>\n        ").concat(isStage ? '' : "\n            ".concat(blockSeparator, "\n            '<block type=\"sensing_setdragmode\" id=\"sensing_setdragmode\"></block>'+\n            ").concat(blockSeparator, "\n        "), "\n        ").concat(blockSeparator, "\n        <block id=\"loudness\" type=\"sensing_loudness\"/>\n        ").concat(blockSeparator, "\n        <block id=\"timer\" type=\"sensing_timer\"/>\n        <block type=\"sensing_resettimer\"/>\n        ").concat(blockSeparator, "\n        <block id=\"of\" type=\"sensing_of\">\n            <value name=\"OBJECT\">\n                <shadow id=\"sensing_of_object_menu\" type=\"sensing_of_object_menu\"/>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block id=\"current\" type=\"sensing_current\"/>\n        <block type=\"sensing_dayssince2000\"/>\n        ").concat(blockSeparator, "\n        <block type=\"sensing_username\"/>\n        ").concat(categorySeparator, "\n    </category>\n    ");
+  return "\n    <category name=\"%{BKY_CATEGORY_SENSING}\" id=\"sensing\" colour=\"#4CBFE6\" secondaryColour=\"#2E8EB8\">\n        ".concat(isStage ? '' : "\n            <block type=\"sensing_touchingobject\">\n                <value name=\"TOUCHINGOBJECTMENU\">\n                    <shadow type=\"sensing_touchingobjectmenu\"/>\n                </value>\n            </block>\n            <block type=\"sensing_touchingcolor\">\n                <value name=\"COLOR\">\n                    <shadow type=\"colour_picker\"/>\n                </value>\n            </block>\n            <block type=\"sensing_coloristouchingcolor\">\n                <value name=\"COLOR\">\n                    <shadow type=\"colour_picker\"/>\n                </value>\n                <value name=\"COLOR2\">\n                    <shadow type=\"colour_picker\"/>\n                </value>\n            </block>\n            <block type=\"sensing_distanceto\">\n                <value name=\"DISTANCETOMENU\">\n                    <shadow type=\"sensing_distancetomenu\"/>\n                </value>\n            </block>\n            ".concat(blockSeparator, "\n        "), "\n        ").concat(isInitialSetup ? '' : "\n            <block id=\"askandwait\" type=\"sensing_askandwait\">\n                <value name=\"QUESTION\">\n                    <shadow type=\"text\">\n                        <field name=\"TEXT\">".concat(name, "</field>\n                    </shadow>\n                </value>\n            </block>\n        "), "\n        <block id=\"answer\" type=\"sensing_answer\"/>\n        ").concat(blockSeparator, "\n        <block type=\"sensing_keypressed\">\n            <value name=\"KEY_OPTION\">\n                <shadow type=\"sensing_keyoptions\"/>\n            </value>\n        </block>\n\t\t<block type=\"sensing_lastkeypressed\"/>\n        <block type=\"sensing_mousedown\"/>\n\t\t<block type=\"sensing_mousebuttondown\">\n            <value name=\"BUTTON\">\n                <shadow type=\"sensing_mousebuttondownmenu\"/>\n            </value>\n        </block>\n        <block type=\"sensing_mousex\"/>\n        <block type=\"sensing_mousey\"/>\n        ").concat(isStage ? '' : "\n            ".concat(blockSeparator, "\n            '<block type=\"sensing_setdragmode\" id=\"sensing_setdragmode\"></block>'+\n            ").concat(blockSeparator, "\n        "), "\n        ").concat(blockSeparator, "\n        <block id=\"loudness\" type=\"sensing_loudness\"/>\n        ").concat(blockSeparator, "\n        <block id=\"timer\" type=\"sensing_timer\"/>\n        <block type=\"sensing_resettimer\"/>\n        ").concat(blockSeparator, "\n        <block id=\"of\" type=\"sensing_of\">\n            <value name=\"OBJECT\">\n                <shadow id=\"sensing_of_object_menu\" type=\"sensing_of_object_menu\"/>\n            </value>\n        </block>\n        ").concat(blockSeparator, "\n        <block id=\"current\" type=\"sensing_current\"/>\n        <block type=\"sensing_dayssince2000\"/>\n        ").concat(blockSeparator, "\n        <block type=\"sensing_username\"/>\n        ").concat(categorySeparator, "\n    </category>\n    ");
 };
 
 const operators = function operators(isInitialSetup) {
@@ -43224,6 +43220,17 @@ const updateMetrics = function updateMetrics(metrics) {
 
 /***/ }),
 
+/***/ 10:
+/*!*******************************!*\
+  !*** ./lib/locales (ignored) ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
 /***/ 2:
 /*!*******************************!*\
   !*** ./lib/locales (ignored) ***!
@@ -43283,6 +43290,28 @@ const updateMetrics = function updateMetrics(metrics) {
 /*!**********************************!*\
   !*** ./node/extend.js (ignored) ***!
   \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 8:
+/*!*****************************************!*\
+  !*** ../locale-data/index.js (ignored) ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 9:
+/*!*******************************!*\
+  !*** ./lib/locales (ignored) ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
