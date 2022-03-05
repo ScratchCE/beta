@@ -34234,7 +34234,7 @@ const variables = function variables() {
 };
 
 const myBlocks = function myBlocks() {
-  return "\n    <category\n        name=\"%{BKY_CATEGORY_MYBLOCKS}\"\n        id=\"myBlocks\"\n        colour=\"#FF6680\"\n        secondaryColour=\"#FF4D6A\"\n        custom=\"PROCEDURE\">\n\t\t<block type=\"procedures_return\" id=\"procedures_return\">\n    </category>\n    ";
+  return "\n    <category\n        name=\"%{BKY_CATEGORY_MYBLOCKS}\"\n        id=\"myBlocks\"\n        colour=\"#FF6680\"\n        secondaryColour=\"#FF4D6A\"\n        custom=\"PROCEDURE\">\n    </category>\n    ";
 }; // eslint-disable-next-line max-len
 
 
