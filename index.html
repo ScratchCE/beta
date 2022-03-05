@@ -17,17 +17,16 @@
 		<h3>Specific versions</h3>
 		
 		<ul>
-			<li> <a data-v="0.1" href="0.1/index.html">v0.1</a> </li>
-			<li> <a data-v="0.2" href="0.2/index.html">v0.2</a> </li>
-			<li> <a data-v="0.2.1" href="0.2.1/index.html">v0.2.1</a> </li>
-			<li> <a data-v="0.3" href="0.3/index.html">v0.3</a> </li>
 			<li> <a data-v="0.3.1" href="0.3.1/index.html">v0.3.1</a> </li>
+			<li> <a data-v="0.3" href="0.3/index.html">v0.3</a> </li>
+			<li> <a data-v="0.2.1" href="0.2.1/index.html">v0.2.1</a> </li>
+			<li> <a data-v="0.2" href="0.2/index.html">v0.2</a> </li>
+			<li> <a data-v="0.1" href="0.1/index.html">v0.1</a> </li>
 		</ul>
 		
 		<script>
 			function goToLatest(editor) {
-				const versionLinks = document.querySelectorAll("a[data-v]");
-				const vLink = versionLinks[versionLinks.length - 1];
+				const vLink = document.querySelector("a[data-v]");
 				
 				location = vLink.dataset.v + "/" + (editor ? "editor.html" : "index.html");
 			}
