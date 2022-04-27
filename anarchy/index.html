@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="google" value="notranslate">
+		<title>Scratch Community Edition</title>
+		<link rel="icon" href="gui/favicon.png">
+		<link rel="apple-touch-icon" href="gui/images/apple-touch-icon.png">
+		
+		<link rel="manifest" href="gui/manifest.webmanifest">
+			
+		
+		<style>
+			body {
+				margin: 15px;
+			}
+			
+			body, input, button {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			}
+			
+			#scratch-gui:not(.loaded) > iframe {
+				display: none;
+			}
+			#scratch-gui.real-loaded:not(.loaded):not(.nonexistent)::after {
+				content: "The project you tried to load does not exist.";
+				color: #9966ff;
+				font-weight: bold;
+			}
+			#scratch-gui.real-loaded:not(.loaded).nonexistent::after {
+				content: "Couldn't reach servers. They are probably down.";
+			}
+			#scratch-gui > iframe {
+				border: none;
+			}
+			#scratch-gui.fill-screen {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
+			}
+			#scratch-gui.fill-screen > iframe {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#project-title-input::placeholder {
+				font-style: italic;
+			}
+			
+			#gui-controls {
+				margin-bottom: 5px;
+			}
+			
+			body.plsloadproject #gui-controls,
+			body.plsloadproject #scratch-gui,
+			body:not(.plsloadproject) #loadprojectmessage {
+				display: none;
+			}
+		</style>
+		
+		<link rel="dns-prefetch" href="https://trampoline.turbowarp.org/">
+		<link rel="dns-prefetch" href="http://5.187.229.106:8079">
+	</head>
+	<body>
+		<div id="splash" aria-hidden="true">
+			<noscript>
+				<h1>Enable JavaScript</h1>
+			</noscript>
+		</div>
+		<div id="page" class="plsloadproject">
+			<div id="loadprojectmessage">
+				No project loaded. Load a project by adding "#[id]" (for example #123) to the end of the URL.
+			</div>
+			<div id="gui-controls">
+				<button
+					onclick="newProject();"
+				>Create</button> 
+				<input id="project-title-input" type="text" placeholder="Project title here"></input>
+				<button
+					onclick="if (!gui.container.classList.contains('loaded')) {return}; ReduxStore.dispatch({type: 'scratch-gui/mode/SET_PLAYER', isPlayerOnly: false}); setFillScreen(true);"
+				>See inside</button>
+			</div>
+			<div id="scratch-gui"></div>
+		</div>
+		<script>
+			// I do have an IPv6 address but I'm just gonna use my IPv4 one just in case
+			const servers = "http://5.187.229.106:8079";
+			const projectHost = `${servers}/projects`;
+			const assetHost = `${servers}/assets`;
+			
+			const defaultProject =
+`{"targets":[{"isStage":true,"name":"Stage","variables":{},"lists":{},"broadcasts":{},"blocks":{},"comments":{},"currentCostume":0,"costumes":[{"assetId":"14e46ec3e2ba471c2adfe8f119052307","name":"","bitmapResolution":1,"md5ext":"14e46ec3e2ba471c2adfe8f119052307.svg","dataFormat":"svg","rotationCenterX":0,"rotationCenterY":0}],"sounds":[],"volume":100,"layerOrder":0,"tempo":60,"videoTransparency":50,"videoState":"on","textToSpeechLanguage":null},{"isStage":false,"name":"Communicat","variables":{},"lists":{},"broadcasts":{},"blocks":{},"comments":{},"currentCostume":0,"costumes":[{"assetId":"b551df3ba49e6475928309214f51bd94","name":"Communicat-a","bitmapResolution":1,"md5ext":"b551df3ba49e6475928309214f51bd94.svg","dataFormat":"svg","rotationCenterX":48.20865451049096,"rotationCenterY":49.61842375318162},{"assetId":"b62c61a6c0384f71872990115d93eea8","name":"Communicat-b","bitmapResolution":1,"md5ext":"b62c61a6c0384f71872990115d93eea8.svg","dataFormat":"svg","rotationCenterX":46.1326061009419,"rotationCenterY":52.471372930065456},{"assetId":"814a2e4591c4eab9e832b88d16d3988d","name":"Communicat-c","bitmapResolution":1,"md5ext":"814a2e4591c4eab9e832b88d16d3988d.svg","dataFormat":"svg","rotationCenterX":55.23697676581517,"rotationCenterY":29.391930273437737},{"assetId":"78ed5bb0fefd8984546468e1a1ebb1b6","name":"Communicat-d","bitmapResolution":1,"md5ext":"78ed5bb0fefd8984546468e1a1ebb1b6.svg","dataFormat":"svg","rotationCenterX":48.44891835577772,"rotationCenterY":41.586213103483544}],"sounds":[{"assetId":"83c36d806dc92327b9e7049a565c6bff","name":"Meow","dataFormat":"wav","rate":48000,"sampleCount":40682,"md5ext":"83c36d806dc92327b9e7049a565c6bff.wav"}],"volume":100,"layerOrder":1,"visible":true,"x":0,"y":0,"size":100,"direction":90,"stretch":100,"draggable":false,"rotationStyle":"all around"}],"monitors":[],"extensions":[],"meta":{"semver":"3.0.0","vm":"0.2.0","agent":""}}`;
+			
+			(async function() {
+						
+				const searchParams = new URLSearchParams(location.search.substring(1));
+				
+				searchParams.set("project_host", projectHost);
+				searchParams.set("asset_host", assetHost);
+				
+				let searchParamsString = searchParams.toString();
+				searchParamsString = searchParamsString === "" ? "" : "?" + searchParamsString;
+				
+				// The global object that stores stuff related to the GUI iframe
+				window.gui = {};
+				
+				gui.container = document.getElementById("scratch-gui");
+				gui.frame = document.createElement("iframe");
+				gui.projTitle = document.getElementById("project-title-input");
+				
+				gui.frame.src =
+					"gui/" +
+					(searchParams.has("editor") ? "editor.html" : "index.html")
+					+ searchParamsString + location.hash;
+				gui.frame.scrolling = "no";
+				
+				gui.container.appendChild(gui.frame);
+				gui.window = gui.frame.contentWindow;
+				
+				shouldLoadGui();
+				
+				gui.window.addEventListener("reduxtargetadded", () => {
+					setProject();
+					
+					window.ReduxTarget = gui.window.ReduxTarget;
+					window.ReduxStore = gui.window.ReduxStore;
+					
+					const store = ReduxStore;
+					const target = ReduxTarget;
+										
+					setFrameSize(480, 360);
+					shouldLoadGui().then(v => {
+						guiIsLoaded(v);
+						gui.container.classList.add("real-loaded");
+					});
+					
+					const state = store.getState().scratchGui;
+					if (state.customStageSize) {
+						if (
+							state.customStageSize.width &&
+							state.customStageSize.height
+						) {
+							// Just in case
+							setFrameSize(
+								state.customStageSize.width,
+								state.customStageSize.height
+							)
+						}
+					}
+
+					target.addEventListener("statechanged", (e) => {
+						console.log(e.detail.action.type, e.detail);
+						const action = e.detail.action;
+						
+						switch (action.type) {
+							case "tw/custom-stage-size/SET":
+								console.log("gui frame:", gui.frame);
+								setFrameSize(action.width, action.height);
+							break;
+							case "scratch-gui/mode/SET_FULL_SCREEN":
+							case "scratch-gui/mode/SET_PLAYER":
+								const mode = e.detail.next.scratchGui.mode;
+								const shouldFillScreen = !mode.isPlayerOnly || mode.isFullScreen;
+								if (action.type === "scratch-gui/mode/SET_PLAYER" && shouldFillScreen) {
+									gui.container.classList.add("not-player-only");
+								}
+								setFillScreen(shouldFillScreen);
+							break;
+							case "projectTitle/SET_PROJECT_TITLE":
+								gui.projTitle.value = action.title;
+							break;
+						}
+					});
+				});
+				
+				window.addEventListener("hashchange", e => setProject(window.location.hash));
+				
+				gui.projTitle.addEventListener("input", e => setProjTitle(gui.projTitle.value));
+			})();
+			
+			function setFillScreen(fillScreen) {
+				if (fillScreen) {
+					gui.container.classList.add("fill-screen");
+				} else {
+					gui.container.classList.remove("fill-screen");
+					gui.container.classList.remove("not-player-only");
+				}
+			}
+			function setFrameSize(sw, sh) {
+				gui.frame.setAttribute("width", sw + 2);
+				gui.frame.setAttribute("height", sh + 2 + 44);
+			}
+			async function shouldLoadGui(id = location.hash.substring(1)) {
+				gui.container.classList.remove("nonexistent");
+				document.body.classList.remove("plsloadproject");
+				if (id === "" || id === "0" || id === 0) {
+					document.body.classList.add("plsloadproject");
+					return false;
+				} else {
+					try {
+						const existRes = await fetch(`${projectHost}/${id}/exists`);
+						if (existRes.ok) return true;
+					} catch(e) {
+						try {
+							const existRes = await fetch(`${servers}`);
+							if (existRes.ok) return false;
+						} catch(e) {
+							console.log(e);
+							gui.container.classList.add("nonexistent");
+							return false;
+						}
+					}
+				}
+				return false;
+			}
+			
+			function guiIsLoaded(set) {
+				if (set !== undefined && window.ReduxStore) {
+					if (set) {
+						gui.container.classList.add("loaded");
+					} else {
+						setFillScreen(false);
+						gui.container.classList.remove("loaded");
+					}
+					return set;
+				}
+				return gui.container.classList.contains("loaded");
+			}
+			
+			async function setProject(hash = window.location.hash) {
+				if (hash === "#create") {
+					newProject();
+					return;
+				}
+				guiIsLoaded(await shouldLoadGui());
+				gui.window.location.hash = hash;
+			}
+			
+			async function newProject() {
+				const resp = await fetch(`${projectHost}/`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: defaultProject
+				});
+				const body = await resp.text();
+				if (!resp.ok) {
+					throw body;
+				}
+				
+				let parsed = JSON.parse(body);
+				window.location.hash = "#" + parsed["content-name"];
+				// Eventually
+				// setProjTitle(atob(parsed["content-title"]));
+				return parsed;
+			}
+			
+			function setProjTitle(title) {
+				ReduxStore.dispatch({
+					type: "projectTitle/SET_PROJECT_TITLE",
+					title: title
+				});
+			}
+		</script>
+	</body>
+</html>
