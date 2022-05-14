@@ -211,7 +211,10 @@
 				} else {
 					try {
 						const existRes = await fetch(`${projectHost}/${id}/exists`);
-						if (existRes.ok) return true;
+						if (existRes.ok) {
+							setStatusMsg("");
+							return true;
+						}
 					} catch(e) {
 						try {
 							const existRes = await fetch(`${servers}`);
