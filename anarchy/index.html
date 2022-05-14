@@ -28,9 +28,6 @@
 				color: #9966ff;
 				font-weight: bold;
 			}
-			#scratch-gui.real-loaded:not(.loaded).nonexistent::after {
-				content: "Couldn't reach servers. They are probably down or the browser is blocking the requests. Try visiting https://5.187.231.186:443 in your browser and allowing the page to load.";
-			}
 			#scratch-gui > iframe {
 				border: none;
 			}
@@ -55,10 +52,17 @@
 				margin-bottom: 5px;
 			}
 			
-			body.plsloadproject #gui-controls,
-			body.plsloadproject #scratch-gui,
-			body:not(.plsloadproject) #loadprojectmessage {
+			body.hidegui #gui-controls,
+			body.hidegui #scratch-gui {
 				display: none;
+			}
+			
+			#loadprojectmessage > div {
+				display: none;
+			}
+			#loadprojectmessage[data-msg="notloaded"] > div[data-msg="notloaded"],
+			#loadprojectmessage[data-msg="unavailable"] > div[data-msg="unavailable"] {
+				display: block;
 			}
 		</style>
 		
@@ -72,8 +76,13 @@
 			</noscript>
 		</div>
 		<div id="page" class="plsloadproject">
-			<div id="loadprojectmessage">
-				No project loaded. Load a project by adding "#[id]" (for example #123) to the end of the URL.
+			<div id="loadprojectmessage" data-msg="notloaded">
+				<div data-msg="notloaded">
+					No project loaded. Load a project by adding "#[id]" (for example #123) to the end of the URL.
+				</div>
+				<div data-msg="unavailable">
+					Couldn't reach servers. They are probably down or the browser is blocking the requests. Try visiting <a href="https://5.187.231.186:443">https://5.187.231.186:443<a> in your browser and allowing the page to load.
+				</div>
 			</div>
 			<div id="gui-controls">
 				<button
@@ -191,14 +200,13 @@
 				}
 			}
 			function setFrameSize(sw, sh) {
-				gui.frame.setAttribute("width", sw + 2);
+				gui.frame.setAttribute("width", Math.min(sw + 2, 482));
 				gui.frame.setAttribute("height", sh + 2 + 44);
 			}
 			async function shouldLoadGui(id = location.hash.substring(1)) {
-				gui.container.classList.remove("nonexistent");
-				document.body.classList.remove("plsloadproject");
+				setStatusMsg("notloaded");
 				if (id === "" || id === "0" || id === 0) {
-					document.body.classList.add("plsloadproject");
+					setStatusMsg("notloaded");
 					return false;
 				} else {
 					try {
@@ -210,7 +218,7 @@
 							if (existRes.ok) return false;
 						} catch(e) {
 							console.log(e);
-							gui.container.classList.add("nonexistent");
+							setStatusMsg("unavailable");
 							return false;
 						}
 					}
@@ -265,6 +273,14 @@
 					type: "projectTitle/SET_PROJECT_TITLE",
 					title: title
 				});
+			}
+			
+			function setStatusMsg(msg) {
+				document.body.classList.remove("hidegui");
+				if (msg !== "") {
+					document.body.classList.add("hidegui");
+				}
+				document.getElementById("loadprojectmessage").dataset.msg = msg;
 			}
 		</script>
 	</body>
