@@ -200,7 +200,7 @@
 				}
 			}
 			function setFrameSize(sw, sh) {
-				gui.frame.setAttribute("width", Math.min(sw + 2, 482));
+				gui.frame.setAttribute("width", Math.max(sw + 2, 482));
 				gui.frame.setAttribute("height", sh + 2 + 44);
 			}
 			async function shouldLoadGui(id = location.hash.substring(1)) {
