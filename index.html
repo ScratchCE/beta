@@ -10,7 +10,11 @@
 			a:not(:hover) {text-decoration: none;}
 			a.link {color: #ff5300;}
 			a.link:hover {color: #00dc0f;}
-			.button {
+			a.link:hover {color: #00dc0f;}
+			a.link-footer {color: #fff;}
+			a.link-footer:hover {color: #f6ab3c;}
+			/*Scratch-likely button, i is placed like this: <a data-placement="left" href="https://github.com/ScratchCE/beta"> <button class="button"><span>GitHub Repository</span></button></a>*/
+			/*.button {
     display: inline-block;
     margin: 0.5em 0;
     border: 0;
@@ -21,28 +25,89 @@
     color: #fff;
     font-size: .8rem;
     font-weight: bold;}
-			.button:hover{background-color: #00dc0f;}
+			.button:hover{background-color: #00dc0f;}*/
+			footer{
+    position: absolute;
+    right: 0;
+	padding: 0;
+    background: #2c6d31;
+    height: auto;
+    width: 100vw;
+    color: #fff;
+	line-height: 28px;
+	font-size:14px;}
+			.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;}
+			.footer-content p{
+	max-width: 550px; 
+	margin: 15px auto;}
+			/*Discord server, cst, retronvb, etc*/
+			#footer-socials{
+	float:right;
+	margin-bottom: 10px;}
+			#footer-socials a{
+	padding-right:17px;
+	padding-bottom: 5px;}
+			.sub-footer{
+    background: #000;
+    width: 100vw;
+    text-align: center;}
+			.sub-footer p{
+	margin-block: 0em;}
 		</style>
 		<title>ScratchCE Betas</title>
 	</head>
+
 	<body>
-	<img width="300" height="100" alt="Scratch Community Edition" draggable="false" src="HP assets/ScratchCE beta.svg">
+	<img width="300" height="100" alt="ScratchCE beta" draggable="false" src="HP assets/ScratchCE beta.svg">
 		<a class="link" href="#latest"><br> Go to latest version</a> <a href="#latest-editor" class="link small">(latest editor)<br></a>
-		<a data-placement="left" href="https://github.com/ScratchCE/beta"> <button class="button"><span>GitHub Repository</span></button></a>
+		
 				
 		<h3>Specific versions</h3>
 		
 		<ul>
-			<li> <a class="link" data-v="0.5.1" href="0.5.1/index.html">v0.5.1</a> </li>
-			<li> <a class="link" data-v="0.5.0" href="0.5.0/index.html">v0.5.0</a> </li>
-			<li> <a class="link" data-v="0.4.1" href="0.4.1/index.html">v0.4.1</a> </li>
-			<li> <a class="link" data-v="0.4.0" href="0.4.0/index.html">v0.4.0</a> </li>
-			<li> <a class="link" data-v="0.3.1" href="0.3.1/index.html">v0.3.1</a> </li>
-			<li> <a class="link" data-v="0.3" href="0.3/index.html">v0.3</a> </li>
-			<li> <a class="link" data-v="0.2.1" href="0.2.1/index.html">v0.2.1</a> </li>
-			<li> <a class="link" data-v="0.2" href="0.2/index.html">v0.2</a> </li>
-			<li> <a class="link" data-v="0.1" href="0.1/index.html">v0.1</a> </li>
+			<li> <a class="link" data-v="0.5.1" href="0.5.1/index.html">v0.5.1</a>
+			<a class="link small" data-v="0.5.1" href="0.5.1/editor.html">(editor)</a></li>
+			<li> <a class="link" data-v="0.5.0" href="0.5.0/index.html">v0.5</a>
+			<a class="link small" data-v="0.5.0" href="0.5.0/editor.html">(editor)</a></li>
+			<li> <a class="link" data-v="0.4.1" href="0.4.1/index.html">v0.4.1</a>
+			<a class="link small" data-v="0.4.1" href="0.4.1/editor.html">(editor)</a></li>
+			<li> <a class="link" data-v="0.4.0" href="0.4.0/index.html">v0.4.0</a>
+			<a class="link small" data-v="0.4.0" href="0.4.0/editor.html">(editor)</a></li>
+			<li> <a class="link" data-v="0.3.1" href="0.3.1/index.html">v0.3.1</a>
+			<a class="link small" data-v="0.3.1" href="0.3.1/editor.html">(editor)</a></li>
+			<li> <a class="link" data-v="0.3" href="0.3/index.html">v0.3</a>
+			<a class="link small" data-v="0.3" href="0.3/editor.html">(editor)</a></li>
+			<li> <a class="link" data-v="0.2.1" href="0.2.1/index.html">v0.2.1</a>
+			<a class="link small" data-v="0.2.1" href="0.2.1/editor.html">(editor)</a></li>
+			<li> <a class="link" data-v="0.2" href="0.2/index.html">v0.2</a>
+			<a class="link small" data-v="0.2" href="0.2/editor.html">(editor)</a></li>
+			<li> <a class="link" data-v="0.1" href="0.1/index.html">v0.1</a>
+			<a class="link small" data-v="0.1" href="0.1/editor.html">(editor)</a></li>
 		</ul>
+		<h3>There are no more versions</h3>
+		
+
+		<footer><div class="footer-content">
+			<h2 style="line-height: 10px; margin-block-start: 1em;">Scratch Community Edition</h2>
+			<p style="margin-block: 0.5em;"
+			>Scratch Community Edition is a Scratch mod made by and for the community of Scratch. The main coder is <a class="link-footer" href="https://github.com/CST1229">CST1229</a> and the main source of ideas is the <a class="link-footer" href="https://discord.gg/ARY8zJJ8hQ">Discord server</a>.</p>
+			<div id="footer-socials">
+				<a class="link-footer" href="https://github.com/ScratchCE">Source code</a>
+				<a class="link-footer" href="https://discord.gg/ARY8zJJ8hQ">Discord server</a>
+				<a class="link-footer" href="https://scratch.mit.edu/studios/31575642">Scratch studio</a>
+				<a class="link-footer" href="https://github.com/CST1229">CST1229</a>
+				<a class="link-footer" href="https://github.com/retronbv">retronbv</a>
+			</div></div>
+			<div class="sub-footer">
+				<p>Scratch Community Edition is not affiliated with Scratch, the Scratch Team, or the Scratch Foundation.</p>
+				<p style="padding: 3px;"> By the community, for the community.</p>
+			</div>
+		</footer>
 
 		<script>
 			function goToLatest(editor) {
