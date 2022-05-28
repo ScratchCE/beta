@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="icon" href="HP assets/favicon.png">
-		<meta charset="UTF-8">
-		<style>
-			body {font-family: helvetica; color:#575e75}
-			bar{
-    position: absolute;
-    right: 0;
-    background: #2c6d31;
-    height: auto;
-    width: 100vw;
-    color: #fff;
-	line-height: 28px;
-	font-size:14px;
-	align-items: center;}
-			bar.top-bar{
-	display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    box-sizing: border-box;
-	align-items: center;
-    height: 4rem;
-	font-weight: bold;
-	font-size: 1rem;}
-			img.logo{
-	height: 3rem;
-	bottom: 0.3em;
-	margin-left: 2em;}
-			.small {font-size: 90%;}
-			a:link {text-decoration: underline;}
-			a:not(:hover) {text-decoration: none;}
-			a.link {color: #ff5300;}
-			a.link:hover {color: #00dc0f;}
-			.main-content{padding-top: 4.8rem; padding-bottom: 0.2rem;}
-			#specific-versions ul li a{color: #ff5300;}
-			#specific-versions ul li a:hover{color: #00dc0f;}
-			#specific-versions ul li{margin-bottom: 0.70em;}
-				bar a.link{color: #fff;}
-				bar a.link:hover{color: #f6ab3c;}
-			tp-item{margin: 0 0.5rem;}
-			/*Scratch-likely button, i is placed like this: <a data-placement="left" href="https://github.com/ScratchCE/beta"> <button class="button"><span>GitHub Repository</span></button></a>*/
-			/*.button {
+  <head>
+    <link rel="icon" href="HP assets/favicon.png" />
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: helvetica;
+        color: #575e75;
+      }
+      bar {
+        position: absolute;
+        right: 0;
+        background: #2c6d31;
+        height: auto;
+        width: 100vw;
+        color: #fff;
+        line-height: 28px;
+        font-size: 14px;
+        align-items: center;
+      }
+      bar.top-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        box-sizing: border-box;
+        align-items: center;
+        height: 4rem;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+      img.logo {
+        height: 3rem;
+        bottom: 0.3em;
+        margin-left: 2em;
+      }
+      .small {
+        font-size: 90%;
+      }
+      a:link {
+        text-decoration: underline;
+      }
+      a:not(:hover) {
+        text-decoration: none;
+      }
+      a.link {
+        color: #ff5300;
+      }
+      a.link:hover {
+        color: #00dc0f;
+      }
+      .main-content {
+        padding-top: 4.8rem;
+        padding-bottom: 0.2rem;
+      }
+      #specific-versions ul li a {
+        color: #ff5300;
+      }
+      #specific-versions ul li a:hover {
+        color: #00dc0f;
+      }
+      #specific-versions ul li {
+        margin-bottom: 0.7em;
+      }
+      bar a.link {
+        color: #fff;
+      }
+      bar a.link:hover {
+        color: #f6ab3c;
+      }
+      tp-item {
+        margin: 0 0.5rem;
+      }
+      /*Scratch-likely button, i is placed like this: <a data-placement="left" href="https://github.com/ScratchCE/beta"> <button class="button"><span>GitHub Repository</span></button></a>*/
+      /*.button {
     display: inline-block;
     margin: 0.5em 0;
     border: 0;
@@ -54,134 +85,221 @@
     font-size: .8rem;
     font-weight: bold;}
 			.button:hover{background-color: #00dc0f;}*/
-			.footer-content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: left;}
-			.footer-content p{
-	max-width: 550px; 
-	margin: 15px auto;}
-			/*Discord server, cst, retronvb, etc*/
-			#footer-socials{
-	float:right;
-	margin-bottom: 10px;}
-			#footer-socials a{
-	padding-right:17px;
-	padding-bottom: 5px;}
-			.sub-footer{
-    background: #000;
-    width: 100vw;
-    text-align: center;}
-			.sub-footer p{
-	margin-block: 0em;}
-				#semicolon{
-	margin: 0;
-	line-height: 1.5385em;
-	background: #000;
-	color: #fff;
-	font: 81.25%'Lucida Grande', arial, sans-serif;
-	padding-left: 18px;
-	text-align: left;}
-	
-		</style>
-		<title>ScratchCE Betas</title>
-	</head>
+      .footer-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: left;
+      }
+      .footer-content p {
+        max-width: 550px;
+        margin: 15px auto;
+      }
+      /*Discord server, cst, retronvb, etc*/
+      #footer-socials {
+        float: right;
+        margin-bottom: 10px;
+      }
+      #footer-socials a {
+        padding-right: 17px;
+        padding-bottom: 5px;
+      }
+      .sub-footer {
+        background: #000;
+        width: 100vw;
+        text-align: center;
+      }
+      .sub-footer p {
+        margin-block: 0em;
+      }
+      #semicolon {
+        margin: 0;
+        line-height: 1.5385em;
+        background: #000;
+        color: #fff;
+        font: 81.25% "Lucida Grande", arial, sans-serif;
+        padding-left: 18px;
+        text-align: left;
+      }
+    </style>
+    <title>ScratchCE Betas</title>
+  </head>
 
-	<body>
-		<bar class="top-bar" style="top:0;">
-			<tp-item>
-				<img title="Woah logo" class="logo" alt="ScratchCE beta" draggable="false" src="HP assets/ScratchCE beta.svg">
-			</tp-item>
-			<!--<tp-item>
+  <body>
+    <bar class="top-bar" style="top: 0">
+      <tp-item>
+        <img
+          title="Woah logo"
+          class="logo"
+          alt="ScratchCE beta"
+          draggable="false"
+          src="HP assets/ScratchCE beta.svg"
+        />
+      </tp-item>
+      <!--<tp-item>
 				<a href="https://scratchce.github.io/beta/<redirect to the lastest or version>/#id" class="link"> Caress Communicat</a>
 			</tp-item>-->
-		</bar>
-		<div class="main-content">
-			<a title="The lastest beta of ScratchCE" class="link" href="#latest">Go to latest version</a> <a title="The lastest beta editor of ScratchCE" href="#latest-editor" class="link small">(latest editor)<br></a>
-			<div id="specific-versions">
-			<h3 title="Browse all the ScratchCE betas!">Specific versions</h3>
-			
-			<ul>
-				<li> <a data-v="0.5.1" href="0.5.1/index.html">v0.5.1</a>
-				<a class="small" data-v="0.5.1" href="0.5.1/editor.html">(editor)</a></li>
-				<li title="Only 5 more versions to the 10th!"> <a data-v="0.5.0" href="0.5.0/index.html">v0.5.0</a>
-				<a class="small" data-v="0.5.0" href="0.5.0/editor.html">(editor)</a></li>
-				<li title="Bug fixes, I guess"> <a data-v="0.4.1" href="0.4.1/index.html">v0.4.1</a>
-				<a class="small" data-v="0.4.1" href="0.4.1/editor.html">(editor)</a></li>
-				<li> <a data-v="0.4.0" href="0.4.0/index.html">v0.4.0</a>
-				<a class="small" data-v="0.4.0" href="0.4.0/editor.html">(editor)</a></li>
-				<li> <a data-v="0.3.1" href="0.3.1/index.html">v0.3.1</a>
-				<a class="small" data-v="0.3.1" href="0.3.1/editor.html">(editor)</a></li>
-				<li title="The third time's the charm!"> <a data-v="0.3" href="0.3/index.html">v0.3.0</a>
-				<a class="small" data-v="0.3" href="0.3/editor.html">(editor)</a></li>
-				<li> <a data-v="0.2.1" href="0.2.1/index.html">v0.2.1</a>
-				<a class="small" data-v="0.2.1" href="0.2.1/editor.html">(editor)</a></li>
-				<li title="The second... Look at the first!"> <a data-v="0.2" href="0.2/index.html">v0.2.0</a>
-				<a class="small" data-v="0.2" href="0.2/editor.html">(editor)</a></li>
-				<li title="The first version! I didn't like the prerelease"> <a id="first"data-v="0.1" href="0.1/index.html">v0.1.0</a>
-				<a class="small" data-v="0.1" href="0.1/editor.html">(editor)</a></li>
-			</ul>
-			<h3>There are no more versions</h3>
-			</div>
-		</div>
-		<bar id="footer"><div class="footer-content">
-			<h2 style="line-height: 10px; margin-block-start: 1em;">Scratch Community Edition</h2>
-			<p style="margin-block: 0.5em;"
-			>Scratch Community Edition is a Scratch mod made by and for the community of Scratch. The main coder is <a title="Main coder" class="link" href="https://github.com/CST1229">CST1229</a> and the main source of ideas is the <a class="link" href="https://discord.gg/ARY8zJJ8hQ">Discord server</a>.</p>
-			<div id="footer-socials">
-				<a class="link" href="https://github.com/ScratchCE">Source code</a>
-				<a class="link" href="https://discord.gg/ARY8zJJ8hQ">Discord server</a>
-				<a class="link" href="https://scratch.mit.edu/studios/31575642">Scratch studio</a>
-				<a title="Main coder" class="link" href="https://github.com/CST1229">CST1229</a>
-				<a title="I mean, He is retronbv 🥔!"class="link" href="https://github.com/retronbv">retronbv 🥔</a>
-			</div></div>
-			<div class="sub-footer">
-				<p>Scratch Community Edition is not affiliated with Scratch, the Scratch Team, or the Scratch Foundation.</p>
-					
-					<p title="The cool slogan" style="padding: 3px;">By the community, for the community.</p>
-			</div>
-			<p title="Woah a semicolon obviusly placed by Narrator's organization" id="semicolon">;</p>
-		</bar>
+    </bar>
+    <div class="main-content">
+      <a title="The lastest beta of ScratchCE" class="link" href="#latest"
+        >Go to latest version</a
+      >
+      <a
+        title="The lastest beta editor of ScratchCE"
+        href="#latest-editor"
+        class="link small"
+        >(latest editor)<br
+      /></a>
+      <div id="specific-versions">
+        <h3 title="Browse all the ScratchCE betas!">Specific versions</h3>
 
-		<script>
-			function goToLatest(editor) {
-				const vLink = document.querySelector("a[data-v]");
-				
-				location = vLink.dataset.v + "/" + (editor ? "editor.html" : "index.html");
-			}
-			function goToVersion(v, editor) {
-				const versionLink = document.querySelector(`a[data-v="${v}"]`);
-				if (versionLink) {
-					location = versionLink.dataset.v + "/" + (editor ? "editor.html" : "index.html");
-				}
-			}
-			
-			// Complicated hash logic
-			function doHash() {
-				if (location.hash === "#latest") {
-					goToLatest(false);
-				} else if (location.hash === "#latest-editor") {
-					goToLatest(true);
-				} else {
-					const parseRegex = /(?:[\d]+\.)+[\d]+/;
-					const editorRegex = /^#(?:[\d]+\.)+[\d]+-editor/;
-					const playerRegex = /^#(?:[\d]+\.)+[\d]+$/;
-					const parsedVer = location.hash.match(parseRegex);
-					
-					if (parsedVer) {
-						if (location.hash.match(editorRegex)) {
-							goToVersion(parsedVer, true);
-						} else if (location.hash.match(playerRegex)) {
-							goToVersion(parsedVer, false);
-						}
-					}
-				}
-			}
-			
-			window.addEventListener("hashchange", doHash);
-			doHash();
-		</script>
-	</body>
+        <ul>
+          <li>
+            <a data-v="0.5.1" href="0.5.1/index.html">v0.5.1</a>
+            <a class="small" data-v="0.5.1" href="0.5.1/editor.html"
+              >(editor)</a
+            >
+          </li>
+          <li title="Only 5 more versions to the 10th!">
+            <a data-v="0.5.0" href="0.5.0/index.html">v0.5.0</a>
+            <a class="small" data-v="0.5.0" href="0.5.0/editor.html"
+              >(editor)</a
+            >
+          </li>
+          <li title="Bug fixes, I guess">
+            <a data-v="0.4.1" href="0.4.1/index.html">v0.4.1</a>
+            <a class="small" data-v="0.4.1" href="0.4.1/editor.html"
+              >(editor)</a
+            >
+          </li>
+          <li>
+            <a data-v="0.4.0" href="0.4.0/index.html">v0.4.0</a>
+            <a class="small" data-v="0.4.0" href="0.4.0/editor.html"
+              >(editor)</a
+            >
+          </li>
+          <li>
+            <a data-v="0.3.1" href="0.3.1/index.html">v0.3.1</a>
+            <a class="small" data-v="0.3.1" href="0.3.1/editor.html"
+              >(editor)</a
+            >
+          </li>
+          <li title="The third time's the charm!">
+            <a data-v="0.3" href="0.3/index.html">v0.3.0</a>
+            <a class="small" data-v="0.3" href="0.3/editor.html">(editor)</a>
+          </li>
+          <li>
+            <a data-v="0.2.1" href="0.2.1/index.html">v0.2.1</a>
+            <a class="small" data-v="0.2.1" href="0.2.1/editor.html"
+              >(editor)</a
+            >
+          </li>
+          <li title="The second... Look at the first!">
+            <a data-v="0.2" href="0.2/index.html">v0.2.0</a>
+            <a class="small" data-v="0.2" href="0.2/editor.html">(editor)</a>
+          </li>
+          <li title="The first version! I didn't like the prerelease">
+            <a id="first" data-v="0.1" href="0.1/index.html">v0.1.0</a>
+            <a class="small" data-v="0.1" href="0.1/editor.html">(editor)</a>
+          </li>
+        </ul>
+        <h3>There are no more versions</h3>
+      </div>
+    </div>
+    <bar id="footer"
+      ><div class="footer-content">
+        <h2 style="line-height: 10px; margin-block-start: 1em">
+          Scratch Community Edition
+        </h2>
+        <p style="margin-block: 0.5em">
+          Scratch Community Edition is a Scratch mod made by and for the
+          community of Scratch. The main coder is
+          <a title="Main coder" class="link" href="https://github.com/CST1229"
+            >CST1229</a
+          >
+          and the main source of ideas is the
+          <a class="link" href="https://discord.gg/ARY8zJJ8hQ">Discord server</a
+          >.
+        </p>
+        <div id="footer-socials">
+          <a class="link" href="https://github.com/ScratchCE">Source code</a>
+          <a class="link" href="https://discord.gg/ARY8zJJ8hQ"
+            >Discord server</a
+          >
+          <a class="link" href="https://scratch.mit.edu/studios/31575642"
+            >Scratch studio</a
+          >
+          <a title="Main coder" class="link" href="https://github.com/CST1229"
+            >CST1229</a
+          >
+          <a
+            title="I mean, He is retronbv 🥔!"
+            class="link"
+            href="https://github.com/retronbv"
+            >retronbv 🥔</a
+          >
+        </div>
+      </div>
+      <div class="sub-footer">
+        <p>
+          Scratch Community Edition is not affiliated with Scratch, the Scratch
+          Team, or the Scratch Foundation.
+        </p>
+
+        <p title="The cool slogan" style="padding: 3px">
+          By the community, for the community.
+        </p>
+      </div>
+      <p
+        title="Woah a semicolon obviusly placed by Narrator's organization"
+        id="semicolon"
+      >
+        ;
+      </p>
+    </bar>
+
+    <script>
+      function goToLatest(editor) {
+        const vLink = document.querySelector("a[data-v]");
+
+        location =
+          vLink.dataset.v + "/" + (editor ? "editor.html" : "index.html");
+      }
+      function goToVersion(v, editor) {
+        const versionLink = document.querySelector(`a[data-v="${v}"]`);
+        if (versionLink) {
+          location =
+            versionLink.dataset.v +
+            "/" +
+            (editor ? "editor.html" : "index.html");
+        }
+      }
+
+      // Complicated hash logic
+      function doHash() {
+        if (location.hash === "#latest") {
+          goToLatest(false);
+        } else if (location.hash === "#latest-editor") {
+          goToLatest(true);
+        } else {
+          const parseRegex = /(?:[\d]+\.)+[\d]+/;
+          const editorRegex = /^#(?:[\d]+\.)+[\d]+-editor/;
+          const playerRegex = /^#(?:[\d]+\.)+[\d]+$/;
+          const parsedVer = location.hash.match(parseRegex);
+
+          if (parsedVer) {
+            if (location.hash.match(editorRegex)) {
+              goToVersion(parsedVer, true);
+            } else if (location.hash.match(playerRegex)) {
+              goToVersion(parsedVer, false);
+            }
+          }
+        }
+      }
+
+      window.addEventListener("hashchange", doHash);
+      doHash();
+    </script>
+  </body>
 </html>
