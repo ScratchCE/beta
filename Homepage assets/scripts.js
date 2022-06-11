@@ -40,7 +40,7 @@ if (localStorage.getItem("mode") === "dark") {
   darkMode();
 } else if (localStorage.getItem("mode") === "light") {
   lightMode();
-} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
   darkMode();
 } else {
   lightMode();
