@@ -1,156 +1,71 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="text/javascript" src="Homepage assets/scripts.js"></script>
+    <link rel="stylesheet" href="Homepage assets/styles.css" />
     <link rel="icon" href="Homepage assets/favicon.png" />
     <meta charset="UTF-8" />
-    <style>
-      body {
-        font-family: helvetica;
-        color: #575e75;
-      }
-      bar {
-        position: absolute;
-        right: 0;
-        background: #2c6d31;
-        height: auto;
-        width: 100vw;
-        color: #fff;
-        line-height: 28px;
-        font-size: 14px;
-        align-items: center;
-      }
-      bar.top-bar {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        box-sizing: border-box;
-        align-items: center;
-        height: 4rem;
-        font-weight: bold;
-        font-size: 1rem;
-      }
-      img.logo {
-        height: 3rem;
-        bottom: 0.3em;
-        margin-left: 2em;
-      }
-      .small {
-        font-size: 90%;
-      }
-      a:link {
-        text-decoration: underline;
-      }
-      a:not(:hover) {
-        text-decoration: none;
-      }
-      a.link {
-        color: #ff5300;
-      }
-      a.link:hover {
-        color: #00dc0f;
-      }
-      .main-content {
-        padding-top: 4.8rem;
-        padding-bottom: 0.2rem;
-      }
-      #specific-versions ul li a {
-        color: #ff5300;
-      }
-      #specific-versions ul li a:hover {
-        color: #00dc0f;
-      }
-      #specific-versions ul li {
-        margin-bottom: 0.7em;
-      }
-      bar a.link {
-        color: #fff;
-      }
-      bar a.link:hover {
-        color: #f6ab3c;
-      }
-      tp-item {
-        margin: 0 0.5rem;
-      }
-      /*Scratch-likely button, i is placed like this: <a data-placement="left" href="https://github.com/ScratchCE/beta"> <button class="button"><span>GitHub Repository</span></button></a>*/
-      /*.button {
-    display: inline-block;
-    margin: 0.5em 0;
-    border: 0;
-    border-radius: 0.5rem;
-    background-color: #ff5300;;
-    cursor: pointer;
-    padding: 1em 1.25em;
-    color: #fff;
-    font-size: .8rem;
-    font-weight: bold;}
-			.button:hover{background-color: #00dc0f;}*/
-      .footer-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        text-align: left;
-      }
-      .footer-content p {
-        max-width: 550px;
-        margin: 15px auto;
-      }
-      /*Discord server, cst, retronvb, etc*/
-      #footer-socials {
-        float: right;
-        margin-bottom: 10px;
-      }
-      #footer-socials a {
-        padding-right: 17px;
-        padding-bottom: 5px;
-      }
-      .sub-footer {
-        background: #000;
-        width: 100vw;
-        text-align: center;
-      }
-      .sub-footer p {
-        margin-block: 0em;
-      }
-      #semicolon {
-        margin: 0;
-        line-height: 1.5385em;
-        background: #000;
-        color: #fff;
-        font: 81.25% "Lucida Grande", arial, sans-serif;
-        padding-left: 18px;
-        text-align: left;
-      }
-    </style>
+    <meta property="og:title" content="ScratchCE Betas" />
+    <meta property="og:url" content="https://scratchce.github.io/beta" />
+    <meta property="og:site_name" content="ScratchCE" />
+    <meta
+      property="og:description"
+      content="By the communities, for the communities."
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/RIMOPA/beta/5d2f42574d32da542702cf1b298ff62d07e58389/Homepage%20assets/ScratchCE%20beta.svg"
+    />
+
     <title>ScratchCE Betas</title>
   </head>
 
-  <body>
-    <bar class="top-bar" style="top: 0">
-      <tp-item>
+  <body id="body">
+    <bar id="header" style="top: 0">
+      <h-item>
         <img
           title="Woah logo"
           class="logo"
           alt="ScratchCE beta"
           draggable="false"
-          src="Homepage assets/ScratchCE beta.svg"
+          src="Homepage assets/logo.svg"
         />
-      </tp-item>
-      <!--<tp-item>
+      </h-item>
+      <!--<h-item>
 				<a href="https://scratchce.github.io/beta/<redirect to the lastest or version>/#id" class="link"> Caress Communicat</a>
-			</tp-item>-->
+			</h-item>-->
+      <h-item
+        class="button"
+        onclick="
+      if (localStorage.getItem('mode') == 'dark')
+      lightMode()
+      else
+      darkMode()"
+      >
+        <img
+          style="vertical-align: middle"
+          src="Homepage assets/dark_theme.svg"
+          width="24"
+          height="24"
+        />
+      </h-item>
     </bar>
     <div class="main-content">
-      <a title="The lastest beta of ScratchCE" class="link" href="#latest"
-        >Go to latest version</a
-      >
-      <a
-        title="The lastest beta editor of ScratchCE"
-        href="#latest-editor"
-        class="link small"
-        >(latest editor)<br
-      /></a>
+      <div>
+        <!--lastest version-->
+        <a
+          title="The lastest beta of ScratchCE"
+          class="link imHere"
+          href="#latest"
+          >Go to latest version</a
+        >
+        <a
+          title="The lastest beta editor of ScratchCE"
+          href="#latest-editor"
+          class="link small imHere"
+          >(latest editor)<br
+        /></a>
+      </div>
       <div id="specific-versions">
         <h3 title="Browse all the ScratchCE betas!">Specific versions</h3>
 
@@ -248,7 +163,7 @@
         </p>
 
         <p title="The cool slogan" style="padding: 3px">
-          By the community, for the community.
+          By the communities, for the communities.
         </p>
       </div>
       <p
@@ -258,48 +173,5 @@
         ;
       </p>
     </bar>
-
-    <script>
-      function goToLatest(editor) {
-        const vLink = document.querySelector("a[data-v]");
-
-        location =
-          vLink.dataset.v + "/" + (editor ? "editor.html" : "index.html");
-      }
-      function goToVersion(v, editor) {
-        const versionLink = document.querySelector(`a[data-v="${v}"]`);
-        if (versionLink) {
-          location =
-            versionLink.dataset.v +
-            "/" +
-            (editor ? "editor.html" : "index.html");
-        }
-      }
-
-      // Complicated hash logic
-      function doHash() {
-        if (location.hash === "#latest") {
-          goToLatest(false);
-        } else if (location.hash === "#latest-editor") {
-          goToLatest(true);
-        } else {
-          const parseRegex = /(?:[\d]+\.)+[\d]+/;
-          const editorRegex = /^#(?:[\d]+\.)+[\d]+-editor/;
-          const playerRegex = /^#(?:[\d]+\.)+[\d]+$/;
-          const parsedVer = location.hash.match(parseRegex);
-
-          if (parsedVer) {
-            if (location.hash.match(editorRegex)) {
-              goToVersion(parsedVer, true);
-            } else if (location.hash.match(playerRegex)) {
-              goToVersion(parsedVer, false);
-            }
-          }
-        }
-      }
-
-      window.addEventListener("hashchange", doHash);
-      doHash();
-    </script>
   </body>
 </html>
