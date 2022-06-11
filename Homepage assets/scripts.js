@@ -36,13 +36,11 @@ function doHash() {
 window.addEventListener("hashchange", doHash);
 doHash();
 //automatic light/dark mode
-if (localStorage.getItem("mode") == null) {
-  if (window.matchMedia("(prefers-color-scheme: dark)")) {
-    darkMode();
-  } else {
-    lightMode();
-  }
-} else if (localStorage.getItem("mode") == "dark") {
+if (localStorage.getItem("mode") === "dark") {
+  darkMode();
+} else if (localStorage.getItem("mode") === "light") {
+  lightMode();
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
   darkMode();
 } else {
   lightMode();
@@ -59,6 +57,7 @@ function darkMode() {
     ["a.link", ["color", "#f6ab3c"]],
     ["#header h-item.button:hover", ["background-color", "#515151"]],
   ]);
+  document.getElementById("body").classList.add("dark");
 }
 function lightMode() {
   localStorage.setItem("mode", "light");
