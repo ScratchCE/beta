@@ -40,11 +40,11 @@ doHash();
 // theme
 function darkMode() {
 	localStorage.setItem("mode", "dark");
-	document.getElementById("body").classList.add("dark");
+	document.body.classList.add("dark");
 }
 function lightMode() {
 	localStorage.setItem("mode", "light");
-	document.getElementById("body").classList.remove("dark");
+	document.body.classList.remove("dark");
 }
 function toggleTheme() {
 	if (localStorage.getItem("mode") === "dark") {
