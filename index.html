@@ -1,171 +1,151 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script
-      type="text/javascript"
-      src="HPAssets/scripts.js"
-      defer
-    ></script>
-    <link rel="stylesheet" href="HPAssets/styles.css" />
-    <link rel="icon" href="HPAssets/favicon.png" />
-    <meta charset="UTF-8" />
-    <meta property="og:title" content="ScratchCE Betas" />
-    <meta property="og:url" content="https://scratchce.github.io/beta" />
-    <meta property="og:site_name" content="ScratchCE" />
-    <meta
-      property="og:description"
-      content="By the communities, for the communities."
-    />
+	<head>
+		<script
+			type="text/javascript"
+			src="homepage/index.js"
+			defer
+		></script>
+		<link rel="stylesheet" href="homepage/index.css" />
+		<link rel="icon" href="homepage/favicon.png" />
+		<meta charset="UTF-8" />
+		<meta property="og:title" content="Scratch CE Betas" />
+		<meta property="og:url" content="https://scratchce.github.io/beta" />
+		<meta property="og:site_name" content="Scratch CE" />
+		<meta
+			property="og:description"
+			content="By the communities, for the communities."
+		/>
+		
+		<title>Scratch CE Betas</title>
+	</head>
+	
+	<body id="body" class="">
+		<div class="bar" id="header" style="top: 0">
+			<div class="h-item">
+				<img
+					class="logo"
+					alt="Scratch CE beta"
+					draggable="false"
+					src="homepage/logo.svg"
+				/>
+			</div>
+			<div
+				class="h-item button"
+				onclick="toggleTheme();"
+			>
+				<img
+					style="vertical-align: middle"
+					src="homepage/dark-theme.svg"
+					width="24"
+					height="24"
+				/>
+			</div>
+		</div>
+		<div class="main-content">
+			<div>
+				<a
+					class="imHere"
+					href="#latest"
+					>Go to latest version</a
+				>
+				<a
+					href="#latest-editor"
+					class="small imHere"
+					>(latest editor)<br
+				/></a>
+			</div>
+			<div id="specific-versions">
+				<h3>Specific versions</h3>
+				<ul>
+					<li>
+						<a data-v="0.5.1" href="0.5.1/index.html">v0.5.1</a>
+						<a class="small" data-v="0.5.1" href="0.5.1/editor.html">
+							(editor)
+						</a>
+					</li>
+					<li>
+						<a data-v="0.5.0" href="0.5.0/index.html">v0.5.0</a>
+						<a class="small" data-v="0.5.0" href="0.5.0/editor.html">
+						(editor)
+						</a>
+					</li>
+					<li>
+						<a data-v="0.4.1" href="0.4.1/index.html">v0.4.1</a>
+						<a class="small" data-v="0.4.1" href="0.4.1/editor.html">
+							(editor)
+						</a>
+					</li>
+					<li>
+						<a data-v="0.4.0" href="0.4.0/index.html">v0.4.0</a>
+						<a class="small" data-v="0.4.0" href="0.4.0/editor.html">
+							(editor)
+						</a>
+					</li>
+					<li>
+						<a data-v="0.3.1" href="0.3.1/index.html">v0.3.1</a>
+						<a class="small" data-v="0.3.1" href="0.3.1/editor.html">
+							(editor)
+						</a>
+					</li>
+					<li>
+						<a data-v="0.3" href="0.3/index.html">v0.3.0</a>
+						<a class="small" data-v="0.3" href="0.3/editor.html">(editor)</a>
+					</li>
+					<li>
+						<a data-v="0.2.1" href="0.2.1/index.html">v0.2.1</a>
+						<a class="small" data-v="0.2.1" href="0.2.1/editor.html">
+							(editor)
+						</a>
+					</li>
+					<li>
+						<a data-v="0.2" href="0.2/index.html">v0.2.0</a>
+						<a class="small" data-v="0.2" href="0.2/editor.html">(editor)</a>
+					</li>
+					<li>
+						<a id="first" data-v="0.1" href="0.1/index.html">v0.1.0</a>
+						<a class="small" data-v="0.1" href="0.1/editor.html">(editor)</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="bar" id="footer">
+			<div class="footer-content">
+				<p>
+					Scratch Community Edition is a Scratch mod made by and for the
+					community of Scratch. JBMC (JoshsAccount on Scratch) started the project, the main coder is
+					<a href="https://github.com/CST1229">CST1229</a>
+					and the main source of ideas is the
+					<a href="https://discord.gg/ARY8zJJ8hQ">Discord server</a>.
+				</p>
+				<div id="footer-socials">
+					<a href="https://github.com/ScratchCE">
+						Source code
+					</a>
+					<a href="https://discord.gg/ARY8zJJ8hQ">
+						Discord server
+					</a>
+					<a href="https://scratch.mit.edu/studios/31575642">
+						Scratch studio
+					</a>
+				</div>
+			</div>
+			<div class="sub-footer">
+				<p>
+					Scratch Community Edition is not affiliated with Scratch, the Scratch
+					Team, or the Scratch Foundation.
+				</p>
 
-    <title>ScratchCE Betas</title>
-  </head>
-
-  <body id="body" class="">
-    <bar id="header" style="top: 0">
-      <h-item>
-        <img
-          title="Woah logo"
-          class="logo"
-          alt="ScratchCE beta"
-          draggable="false"
-          src="HPAssets/logo.svg"
-        />
-      </h-item>
-      <!--<h-item>
-				<a href="https://scratchce.github.io/beta/<redirect to the lastest or version>/#id" class="link"> Caress Communicat</a>
-			</h-item>-->
-      <h-item
-        class="button"
-        onclick="
-      if (localStorage.getItem('mode') == 'dark')
-      lightMode()
-      else
-      darkMode()"
-      >
-        <img
-          style="vertical-align: middle"
-          src="HPAssets/dark_theme.svg"
-          width="24"
-          height="24"
-        />
-      </h-item>
-    </bar>
-    <div class="main-content">
-      <div>
-        <!--lastest version-->
-        <a
-          title="The lastest beta of ScratchCE"
-          class="link imHere"
-          href="#latest"
-          >Go to latest version</a
-        >
-        <a
-          title="The lastest beta editor of ScratchCE"
-          href="#latest-editor"
-          class="link small imHere"
-          >(latest editor)<br
-        /></a>
-      </div>
-      <div id="specific-versions">
-        <h3 title="Browse all the ScratchCE betas!">Specific versions</h3>
-
-        <ul>
-          <li>
-            <a data-v="0.5.1" href="0.5.1/index.html">v0.5.1</a>
-            <a class="small" data-v="0.5.1" href="0.5.1/editor.html"
-              >(editor)</a
-            >
-          </li>
-          <li title="Only 5 more versions to the 10th!">
-            <a data-v="0.5.0" href="0.5.0/index.html">v0.5.0</a>
-            <a class="small" data-v="0.5.0" href="0.5.0/editor.html"
-              >(editor)</a
-            >
-          </li>
-          <li title="Bug fixes, I guess">
-            <a data-v="0.4.1" href="0.4.1/index.html">v0.4.1</a>
-            <a class="small" data-v="0.4.1" href="0.4.1/editor.html"
-              >(editor)</a
-            >
-          </li>
-          <li>
-            <a data-v="0.4.0" href="0.4.0/index.html">v0.4.0</a>
-            <a class="small" data-v="0.4.0" href="0.4.0/editor.html"
-              >(editor)</a
-            >
-          </li>
-          <li>
-            <a data-v="0.3.1" href="0.3.1/index.html">v0.3.1</a>
-            <a class="small" data-v="0.3.1" href="0.3.1/editor.html"
-              >(editor)</a
-            >
-          </li>
-          <li title="The third time's the charm!">
-            <a data-v="0.3" href="0.3/index.html">v0.3.0</a>
-            <a class="small" data-v="0.3" href="0.3/editor.html">(editor)</a>
-          </li>
-          <li>
-            <a data-v="0.2.1" href="0.2.1/index.html">v0.2.1</a>
-            <a class="small" data-v="0.2.1" href="0.2.1/editor.html"
-              >(editor)</a
-            >
-          </li>
-          <li title="The second... Look at the first!">
-            <a data-v="0.2" href="0.2/index.html">v0.2.0</a>
-            <a class="small" data-v="0.2" href="0.2/editor.html">(editor)</a>
-          </li>
-          <li title="The first version! I didn't like the prerelease">
-            <a id="first" data-v="0.1" href="0.1/index.html">v0.1.0</a>
-            <a class="small" data-v="0.1" href="0.1/editor.html">(editor)</a>
-          </li>
-        </ul>
-        <h3>There are no more versions</h3>
-      </div>
-    </div>
-    <bar id="footer"
-      ><div class="footer-content">
-        <h2 style="line-height: 10px; margin-block-start: 1em">
-          Scratch Community Edition
-        </h2>
-        <p style="margin-block: 0.5em">
-          Scratch Community Edition is a Scratch mod made by and for the
-          community of Scratch. The main coder is
-          <a title="Main coder" class="link" href="https://github.com/CST1229"
-            >CST1229</a
-          >
-          and the main source of ideas is the
-          <a class="link" href="https://discord.gg/ARY8zJJ8hQ">Discord server</a
-          >.
-        </p>
-        <div id="footer-socials">
-          <a class="link" href="https://github.com/ScratchCE">Source code</a>
-          <a class="link" href="https://discord.gg/ARY8zJJ8hQ"
-            >Discord server</a
-          >
-          <a class="link" href="https://scratch.mit.edu/studios/31575642"
-            >Scratch studio</a
-          >
-          <a title="Main coder" class="link" href="https://github.com/CST1229"
-            >CST1229</a
-          >
-        </div>
-      </div>
-      <div class="sub-footer">
-        <p>
-          Scratch Community Edition is not affiliated with Scratch, the Scratch
-          Team, or the Scratch Foundation.
-        </p>
-
-        <p title="The cool slogan" style="padding: 3px">
-          By the communities, for the communities.
-        </p>
-      </div>
-      <p
-        title="Woah a semicolon obviusly placed by Narrator's organization"
-        id="semicolon"
-      >
-        ;
-      </p>
-    </bar>
-  </body>
+				<p style="padding: 3px">
+					By the communities, for the communities.
+				</p>
+			</div>
+			<p
+				title="Woah! A semicolon, obviously placed by the Narrator's organization!"
+				id="semicolon"
+			>
+				;
+			</p>
+		</div>
+	</body>
 </html>
