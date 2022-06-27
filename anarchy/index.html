@@ -274,7 +274,7 @@
 					const random = Math.floor(Math.random() * number) + 1;
 					
 					hash = "#" + random;
-					gui.window.location.hash = hash;
+					window.location.hash = hash;
 					return;
 				}
 				guiIsLoaded(await shouldLoadGui(hash.substring(1)));
