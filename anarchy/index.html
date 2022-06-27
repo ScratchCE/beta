@@ -270,7 +270,10 @@
 						setStatusMsg("unavailable");
 						return;
 					}
-					hash = "#" + text;
+					const number = Number(text);
+					const random = Math.floor(Math.random() * number) + 1;
+					
+					hash = "#" + random;
 				}
 				guiIsLoaded(await shouldLoadGui(hash.substring(1)));
 				gui.window.location.hash = hash;
