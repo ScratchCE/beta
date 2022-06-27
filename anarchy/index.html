@@ -86,10 +86,12 @@
 			</div>
 			<div id="gui-controls">
 				<button
+					id="gui-button-create"
 					onclick="newProject();"
 				>Create</button> 
 				<input id="project-title-input" type="text" placeholder="Project title here"></input>
 				<button
+					id="gui-button-see-inside"
 					onclick="if (!gui.container.classList.contains('loaded')) {return}; ReduxStore.dispatch({type: 'scratch-gui/mode/SET_PLAYER', isPlayerOnly: false}); setFillScreen(true);"
 				>See inside</button>
 			</div>
@@ -107,6 +109,16 @@
 			(async function() {
 						
 				const searchParams = new URLSearchParams(location.search.substring(1));
+				
+				if (searchParams.has("no-see-inside")) {
+					document.getElementById("gui-button-see-inside").remove();
+				}
+				if (searchParams.has("no-create")) {
+					document.getElementById("gui-button-create").remove();
+				}
+				if (searchParams.has("no-name")) {
+					document.getElementById("project-title-input").style.display = "none";
+				}
 				
 				searchParams.set("project_host", projectHost);
 				searchParams.set("asset_host", assetHost);
