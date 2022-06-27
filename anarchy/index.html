@@ -259,7 +259,20 @@
 					newProject();
 					return;
 				}
-				guiIsLoaded(await shouldLoadGui());
+				if (hash === "#random") {
+					const req = await fetch(projectHost + "/count");
+					if (!req.ok) {
+						setStatusMsg("unavailable");
+						return;
+					}
+					const text = await (req.text());
+					if (!Number(text)) {
+						setStatusMsg("unavailable");
+						return;
+					}
+					hash = "#" + text;
+				}
+				guiIsLoaded(await shouldLoadGui(hash.substring(1)));
 				gui.window.location.hash = hash;
 			}
 			
@@ -273,6 +286,7 @@
 				});
 				const body = await resp.text();
 				if (!resp.ok) {
+					setStatusMsg("unavailable");
 					throw body;
 				}
 				
