@@ -260,7 +260,7 @@
 					return;
 				}
 				if (hash === "#random") {
-					setTimeout(() => {
+					setTimeout(async () => {
 						const req = await fetch(projectHost + "/count");
 						if (!req.ok) {
 							setStatusMsg("unavailable");
