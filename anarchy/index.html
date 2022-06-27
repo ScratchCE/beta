@@ -174,7 +174,7 @@
 					}
 
 					target.addEventListener("statechanged", (e) => {
-						console.log(e.detail.action.type, e.detail);
+						if (window.sceDebug) console.log(e.detail.action.type, e.detail);
 						const action = e.detail.action;
 						
 						switch (action.type) {
@@ -260,21 +260,23 @@
 					return;
 				}
 				if (hash === "#random") {
-					const req = await fetch(projectHost + "/count");
-					if (!req.ok) {
-						setStatusMsg("unavailable");
-						return;
-					}
-					const text = await (req.text());
-					if (!Number(text)) {
-						setStatusMsg("unavailable");
-						return;
-					}
-					const number = Number(text);
-					const random = Math.floor(Math.random() * number) + 1;
-					
-					hash = "#" + random;
-					window.location.hash = hash;
+					setTimeout(() => {
+						const req = await fetch(projectHost + "/count");
+						if (!req.ok) {
+							setStatusMsg("unavailable");
+							return;
+						}
+						const text = await (req.text());
+						if (!Number(text)) {
+							setStatusMsg("unavailable");
+							return;
+						}
+						const number = Number(text);
+						const random = Math.floor(Math.random() * number) + 1;
+						
+						hash = "#" + random;
+						window.location.hash = hash;
+					}, 250);
 					return;
 				}
 				guiIsLoaded(await shouldLoadGui(hash.substring(1)));
